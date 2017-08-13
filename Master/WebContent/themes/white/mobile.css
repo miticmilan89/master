@@ -1,0 +1,71 @@
+.form-horizontal .control-label {
+    text-align: left !important;
+}
+.control-label {
+	width:100% !important;
+	word-wrap: normal !important;
+}
+
+.column-label{
+	text-align: left !important;
+	display: block !important;
+	width : 100% !important;
+	word-wrap: normal !important;
+}
+
+.column-data{
+	display: block !important;
+}
+
+.row {
+	width:100% !important;
+	height: 56px !important; 
+}
+
+.selectW {
+	width : 400px;
+}
+
+.contentTitle {
+	font-size: 16px !important;
+}
+.searchRow {
+	width:100% !important;
+	height: 56px !important; 
+}
+
+.ui-datepicker table {
+	font-size: 10px !important;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 10px !important;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+	font-size:10px !important;
+}
+button.ui-datepicker-close {
+	font-size:10px !important;
+}
+.ui-timepicker-table .ui-timepicker-title { 
+	line-height: 1.2em !important; 
+	font-size:10px !important;
+}
+.ui-timepicker-hours, .ui-timepicker-minutes { font-size:10px  !important;  }
+
+.field50perc {
+	width : 80% !important;
+}
+.field20perc {
+	width : 100% !important;
+}
+.field70perc {
+	width : 100% !important;
+}
+.field30perc {
+	width : 90% !important;
+}
+.field100perc {
+	width : 100% !important;
+}

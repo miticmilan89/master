@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appConfig>
+
+	<!-- remove from stack trace all lines that are not related to classes in this project (remove in production) 
+	NOT USED FOR NOW - <MINIMAL_STACK_TRACE>true</MINIMAL_STACK_TRACE>
+	-->
+	
+	<!-- (remove in production) -->
+	<DEBUG_MODE>true</DEBUG_MODE>
+	<!--  HttpOnly supported only on Servlet 3.0 SPEC - so depends on server library set for the project - check java code in ContextFilter in order to enable this feature -->
+	<WEB_SECURITY_USE_HTTP_ONLY_COOKIE>false</WEB_SECURITY_USE_HTTP_ONLY_COOKIE>
+	
+	<WEB_SECURITY_USE_SECURE_COOKIE>false</WEB_SECURITY_USE_SECURE_COOKIE>
+	
+	<SECURITY_IGNORED_URL_LIST>
+		<SECURITY_IGNORED_URL>/app/changeLocale/*</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/changeLanguage/*</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/logout</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/home</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/accessDenied</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/error</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/changePass</SECURITY_IGNORED_URL>
+		<SECURITY_IGNORED_URL>/app/ajax/*</SECURITY_IGNORED_URL>
+	</SECURITY_IGNORED_URL_LIST>
+	
+	<SERVER_SOCKET_PORT>35338</SERVER_SOCKET_PORT>
+
+	<MAX_TIME_TO_RETURN_RESP_MSEC>5000</MAX_TIME_TO_RETURN_RESP_MSEC>
+	
+	<SERVER_ID>APP1</SERVER_ID>
+	
+</appConfig>

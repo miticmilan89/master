@@ -1,0 +1,773 @@
+body {
+	font-family: Arial, Helvetica, sans-serif, Verdana;
+	font-size : 12px;
+	background-color: white;
+    color: black;
+}
+
+.ui-widget {
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	font-size : 12px;
+}
+.no-close .ui-dialog-titlebar-close {display: none }
+/* CONTAINER DEFAULT
+ -----------------------------  
+*/
+.container {
+	display: inline-block;
+	width:100%;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	text-align: center;
+}
+.header {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+.menu {
+	padding: 0px;
+	border: 0px;
+}
+.content {
+	font-size:14px;
+	margin: 0px;
+	padding: 0px;
+	padding-left:5px;
+	border: 0px;
+	width:80%;
+	display: inline-block;
+}
+.footer {
+	display: inline-block;
+	margin-top: 10px;
+	border: 0px;
+	text-align: center;
+    height: 30px;
+    width:80%;
+    background-color:#1675a1;
+    color: white;
+	padding-top: 5px;
+}
+
+.contentTitle {
+	width:100%;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	text-indent : 10px;
+	font-size: 31px;
+	line-height: 44px;
+	font-weight: bold;
+	color:#FFF;
+	text-align : left;
+	background: #49ADDC;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#49ADDC), to(#1A79A6)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #49ADDC, #1A79A6); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(top, #49ADDC, #1A79A6); /* FF3.6+ */
+	background-image:     -ms-linear-gradient(top, #49ADDC, #1A79A6); /* IE10 */
+	background-image:      -o-linear-gradient(top, #49ADDC, #1A79A6); /* Opera 11.10+ */
+	background-image:         linear-gradient(to bottom, #49ADDC, #1A79A6); /* W3C */
+	background-repeat: no-repeat;
+	background-position: left left;
+	filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#49ADDC', endColorstr='#1A79A6'); /* IE6 & IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#49ADDC', endColorstr='#1A79A6')"; /* IE8 */
+		
+}
+/* .contentToolbar { */
+/* 	width:100%; */
+/* 	height : 40px; */
+/* 	margin: 0; */
+/* 	padding: 0px 0px 0px 0px; */
+/* 	color:#FFF; */
+/* 	background: #D2DFEF; */
+/* 	background: -webkit-linear-gradient(top, #D2DFEF, #F0F4F9); Chrome 10+, Saf5.1+ */
+/* 	background: -moz-linear-gradient(top, #D2DFEF, #F0F4F9); FF3.6+ */
+/* 	background: -ms-linear-gradient(top, #D2DFEF, #F0F4F9); IE10 */
+/* 	background: -o-linear-gradient(top, #D2DFEF, #F0F4F9); Opera 11.10+ */
+/* 	background: linear-gradient(to bottom, #D2DFEF, #F0F4F9); W3C */
+/* 	filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#D2DFEF', endColorstr='#F0F4F9'); IE6 & IE7 */
+/* 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#D2DFEF', endColorstr='#F0F4F9')"; IE8 */
+/* 	margin-top:2px; */
+/* 	margin-bottom:2px; */
+/* } */
+
+.contentToolbar {
+	border: 1px solid #a6c9e2;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+	margin-top:2px;
+	margin-bottom:2px;
+	box-sizing: border-box;
+	padding-left:7px;
+	padding-right:7px;
+}
+
+.contentToolbar button {
+/* 	margin-left: 7px; */
+/* 	margin-right: 7px; */
+}
+
+#PAGE_TOOLBAR{display:none}
+#PAGE_TITLE{display:none}
+
+#tabs ul li {
+	font-size:15px;	
+}
+
+.accordionFilter {
+	margin-bottom:5px;
+}
+.accordionFilter div {
+	overflow:hidden;
+	font-size:12px !important;
+}
+.accordionFilter h3 {
+	height:20px;
+	line-height:20px;
+	font-size:12px !important;
+	text-align:left;
+}
+
+.listheader {
+	color:#49ADDC;	
+}
+
+.listheader a {
+	float:left;
+	padding:1px;
+}
+
+.listheader .currentPage {
+	color:black;
+	font-weight:bold;
+	font-size:20px;
+	float:left;
+	margin-left:3px;
+}
+
+.listheader .page {
+	color:#49ADDC;
+	padding:3px;
+	float:left;
+	margin-left:3px;
+}
+
+.sbFixedWidth {
+	font-family: Courier !important;
+}
+/* TOOLBAR DEFAULT
+ -----------------------------  
+*/
+
+.toolbarButton {
+	padding:4px 14px 4px 14px;
+	margin:6px 2px 0px 2px;
+	background-color:#D2DFEF;
+	border: 1px solid #ccc;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	display: block;
+	float:left;
+	font-size: 12px; 
+	cursor: pointer;
+}
+.toolbarButton:hover {
+	background-color: #F1B43D;
+	border: 1px solid #fff;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+
+/* FORM DEFAULT
+ -----------------------------  
+*/
+
+.row {
+	/*  float: left;   */
+	/* 	height: 28px;  */
+	border-bottom: 1px solid #93999a;
+	line-height: 18px;
+	min-height:18px;
+	clear: left;
+	width: 100%;
+	vertical-align: middle;
+	margin: 0px;
+	white-space: nowrap;
+	text-align: left;
+	width:100% !important;
+}
+
+.column-label{
+	text-align: right;
+	padding: 4px 6px 4px 0px;
+	vertical-align: middle;
+	/*float: left;*/
+	line-height: 18px;
+	min-height:18px;
+	/*border-right: 1px solid #93999a;
+	border-collapse: collapse;*/
+/* 	white-space: nowrap; */
+	font-size:12px;
+	display:inline-block;
+	width:25%;
+	word-wrap:break-word;
+}
+
+.column-data{
+	display:inline-block;
+	text-align: left;
+	padding: 4px 4px 4px 4px;
+	/*border-left: 1px solid #93999a;*/
+	line-height: 18px;
+	/*float: left;*/
+	min-height:18px;
+	border-collapse: collapse;  
+	margin-left: -1px;
+	vertical-align: middle;
+/* 	white-space: nowrap; */
+	font-size:12px;
+	word-wrap:break-word;
+}
+
+.column-data input {
+	float:left;
+}
+
+.inputErr {
+	background-color: red;
+	color: blue;
+    height: 25px;
+}
+
+.inputdef {
+    background-color: white !important;
+    height: 25px;
+}
+
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.searchRow {
+	line-height: 18px;
+	min-height:18px;
+	clear: left;
+	vertical-align: middle;
+	margin: 0px;
+	text-align: left;
+	width:100% !important;
+}
+
+
+/* TABLE FOR DISPLAYING SEARCH RESULTS
+ ---------------------------------------
+*/
+.listheader  {
+	font-size:13px;
+	padding-left:5px;
+	padding-right:5px;
+}
+/* HTML5 responsive design
+* more info: 		http://exisweb.net/responsive-table-plugins-and-patterns
+* applied pattern: 	http://demosthenes.info/blog/852/A-Fresh-Approach-to-Responsive-HTML5-Tables
+ */
+@media screen and (max-width: 600px) {
+	table.list caption { background-image: none; }
+	table.list thead { display: none; }
+	table.list tbody td { display: block; padding: .6rem; }
+	table.list tbody tr td:first-child { background: #C0D8F9; color: #466FA9 !important; }
+	table.list tbody td:before {
+		content: attr(data-th); font-weight: bold;
+		display: inline-block; width: 6rem;
+	}
+}
+
+table.list {
+	width: 99%;
+	font-size:12px;
+	margin:2px 0px 10px 5px;
+}
+
+table.list td {
+	padding: 3px;
+	border-left:solid 1px #ededed;
+	border-right:solid 1px #ededed;
+	text-align: left;
+	vertical-align: middle;
+}
+
+table.list th a, table.list th a:visited {
+	background-color: transparent;
+	color:#fff;
+	font-weight:normal;
+	text-transform:uppercase;
+}
+
+table.list th a:hover {
+	background-color: transparent;
+	color: #4d4d4f !important;
+	font-weight:normal;
+}
+table.list th {
+	padding: 4px 4px 4px 5px;
+	text-align: center;
+	white-space: nowrap;
+	border:solid #ffffff 1px;
+	background-color: #C0D8F9;
+	color: #466FA9 !important;
+	background: -webkit-linear-gradient(top, #C0D8F9, #DEF0FC); /* Chrome 10+, Saf5.1+ */
+	background: -moz-linear-gradient(top, #C0D8F9, #DEF0FC); /* FF3.6+ */
+	background: -ms-linear-gradient(top, #C0D8F9, #DEF0FC); /* IE10 */
+	background: -o-linear-gradient(top, #C0D8F9, #DEF0FC); /* Opera 11.10+ */
+	background: linear-gradient(to bottom, #C0D8F9, #DEF0FC); /* W3C */
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	font-size: 13px;
+}
+table.list tr.even {
+	background: #fff;
+	color: #142a4d;
+	border-top:solid #ededed 2px;
+	border-bottom:solid #ededed 2px;
+}
+table.list tr.odd {
+	background: #EDF2F8;
+	color: #142a4d;
+	border-top:solid #ededed 2px;
+	border-bottom:solid #ededed 2px;
+}
+table.list tr.error {
+	background: #FA898B;
+	color: #142a4d;
+	border-top:solid #ededed 2px;
+	border-bottom:solid #ededed 2px;
+}
+/* highlight table row onmouseover */
+table.list tr:hover {
+/* 	border-bottom: 1px solid #C0C0C0; */
+/* 	border-top: 1px solid #C0C0C0; */
+	background-color: #C1D9F9; 
+}
+
+.thSortedAsc {
+	background-color: #DDEFFC !important;
+	background-image: url(img/arrow_down.png) !important;
+	background-position: 97%  !important; 
+	background-repeat: no-repeat  !important;
+	padding-right:8px !important;
+	cursor: pointer;
+}
+.thSortedDesc {
+	background-color: #DDEFFC !important;
+	background-image: url(img/arrow_up.png) !important;
+	background-position: 97%  !important;
+	background-repeat: no-repeat  !important;
+	padding-right:8px !important;
+	cursor: pointer;
+}
+.thSortedOff {
+	background-color: #C1D9F9 !important;
+	background-image: url(img/arrow_off.png) !important;
+	background-position: 97%  !important; 
+	background-repeat: no-repeat  !important;
+	padding-right:8px !important;
+	cursor: pointer;
+}
+
+.summaryTable {
+	width:100% !important;
+}
+
+.summaryTableTitle {
+	font-size:15px;
+}
+
+.summaryTable tr {
+	border-top:solid #ededed 2px;
+	border-bottom:solid #ededed 2px;
+}
+
+.summaryTable td {
+	vertical-align:middle !important;
+}
+
+.summaryTable table {
+	width:100%;
+	table-layout:fixed;
+}
+.summaryTable table tr {
+	border:none;
+	width:100% !important;
+}
+.summaryTable table td {
+	border:none;
+	background-color: white;
+	width:50% !important;
+}
+
+.ddmenuTd {
+	border:none !important;
+	width:35px !important;
+	max-width:35px !important;
+	background-color: white !important;
+	vertical-align:middle;
+}
+
+.ddmenuTd ul {
+	position: absolute; 
+	z-index: 100;
+}
+.ddmenuTd ul li {
+	font-size : 12px;
+}
+.ddmenuTd ul li a{
+	font-size : 12px;
+}
+
+.ddmenu {
+	width: 20px;
+	height: 20px;
+}
+
+
+/* COMMON
+ -----------------------------  
+*/
+
+.pre {
+ overflow-x: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ /* width: 99%; */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ font-size: 12px;
+}
+
+._tableErr {
+	color:red;
+}
+
+.numberAlign {
+	text-align: right !important;
+}
+
+.RECENTLOGIN {
+	font-family: "Lucida Grande", Tahoma;
+	font-size: 12px;
+	font-weight: lighter;
+	font-variant: normal;
+	text-transform: uppercase;
+	color: #666666;
+    margin-top: 10px;
+	text-align: left!important;
+	letter-spacing: 0.3em;
+	white-space: nowrap;
+}	
+/* JQUERY CSS TOOLTIP
+ -----------------------------  
+*/
+.jqerrtooltip {
+    background: url("img/redBckg.png") scroll 0 0 transparent;
+    max-width: 650px !important;
+    font-size: 12px !important;
+}
+
+.jqerrbckg {
+	background: url(img/err.png) no-repeat left ;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+.jqhelptooltip {
+    background: url("img/blueBckg.png") scroll 0 0 transparent;
+    max-width: 650px !important;
+    font-size: 12px !important;
+}
+
+.jqhelpbckg {
+	background: url(img/help.png) no-repeat left ;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+/* JQUERY datepicker
+ -----------------------------  
+*/
+.todayHighlighted a{
+   background-color : #DAD7C5 !important;
+   background-image :none !important;
+   color: White !important;
+}
+
+.selectedDateHighlighted a{
+   background-color : #767769 !important;
+   background-image :none !important;
+   color: White !important;
+}
+
+input.datepicker {
+		width: 75px; 
+		padding-right:20px;  
+		background:url('img/calendar.png');
+		background-repeat: no-repeat;
+		background-position: top right;
+}
+
+input.timepicker {
+		width: 60px; 
+		padding-right:20px;  
+		background:url('img/time.png');
+		background-repeat: no-repeat;
+		background-position: top right;
+}
+
+/* APP COMMON
+ -----------------------------  
+*/
+.errGlobal {
+	text-align : left;
+	color:red;
+}
+.errMsgGlobal {
+	text-align : left;
+	color:green;
+}
+
+.menuItemHeader {
+	background-color: #C2D9F9;
+	font-weight: bold;
+	min-height: 18px;
+	padding-top  :6px;
+	padding-left  :2px;
+}
+
+.alignRight {
+	text-align:right !important;
+	padding-right:10px !important;
+}
+
+.alignCenter {
+	text-align:center !important;
+}
+
+/* Terminal
+------------------------------
+*/
+.terminalStatus3 {
+	color:#0033cc;
+}
+.terminalStatus1 {
+	color:#006600;
+}
+.terminalStatus0 {
+	color:black;
+}
+
+/* TranLog result code colors
+------------------------------
+*/
+.transStatusCode_APPROVED {
+	color:blue;
+}
+.transStatusCode_CAPTURED {
+	color:green;
+}
+.transStatusCode_DENIEDBYRISK {
+	color:red;
+}
+.transStatusCode_FAILEDAVS {
+	color:red;
+}
+.transStatusCode_HOSTTIMEOUT {
+	color:red;
+}
+.transStatusCode_ISSUERUNAVAILABLE {
+	color:#0033cc;
+}
+.transStatusCode_NOTAPPROVED {
+	color:black;
+}
+.transStatusCode_NOTCAPTURED {
+	color:black;
+}
+.transStatusCode_NOTPROCESSED {
+	color:#0033cc;
+}
+.transStatusCode_NOTVOIDED {
+	color:gray;
+}
+.transStatusCode_REVERSED {
+	color:gray;
+}
+.transStatusCode_CREDITED {
+	color:gray;
+}
+.transStatusCode_PROCESSED {
+	color:#0033cc;
+}
+.transStatusCode_unknown {
+	color:#0033cc;
+}
+.transStatusCode_VOIDED {
+	color:gray;
+}
+
+/* Field width - this is owerwritten for mobile use */
+.field10perc {
+	width : 10% !important;
+}
+.field20perc {
+	width : 20% !important;
+}
+.field30perc {
+	width : 30% !important;
+}
+.field40perc {
+	width : 40% !important;
+}
+.field50perc {
+	width : 50% !important;
+}
+.field60perc {
+	width : 60% !important;
+}
+.field70perc {
+	width : 70% !important;
+}
+.field80perc {
+	width : 80% !important;
+}
+.field90perc {
+	width : 90% !important;
+}
+.field100perc {
+	width : 100% !important;
+}
+.field15perc {
+	width : 15% !important;
+}
+.field25perc {
+	width : 25% !important;
+}
+.field5perc {
+	width : 5% !important;
+}
+.upperCase {
+  text-transform:uppercase;
+}
+.lowerCase {
+  text-transform:lowercase;
+}
+
+.list a:visited, a:active {
+	color: #7F7F7F !important;
+}
+
+.column-data a:visited, a:active {
+	color: #7F7F7F !important;
+}
+
+.activeLink {
+	text-decoration: underline !important;
+}
+
+#exportExcel {
+	background-image: url(img/excellogo.png);
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+#downloadBtn {
+	background-image: url(img/download.png);
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.selected {
+/* 	border-left: solid 10px blue !important; */
+	background-color: #C1D9F9 !important;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+
+.centered {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.centerAlign {
+	text-align: center;
+}
+
+.halfDisplay {
+	float:left;
+	width:47%;
+	padding: 5px;
+}
+
+.success {
+	background-color: #33FF33 !important;
+}
+
+.fail {
+	background-color: #FF3333 !important;
+}
+
+.editButton {
+	background-image: url(img/edit.png);
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+}
+
+.divider-vertical-btn{
+   height: 40px;
+   width: 1px;
+   margin: 0 5px;
+   overflow: hidden;
+   background-color: #DDD;
+   border-right: 2px solid #FFF;
+   float:left;
+}
+.clGreen {
+	color:green;
+}
+.sbMoveDiv {
+	float:left; 
+	text-align:center;
+	width: 50px;
+	margin-top: 100px;
+	margin-left: 7px;
+}
+.sbMoveButton {
+	padding:4px 14px 4px 14px;
+	margin:6px 2px 0px 2px;
+	background-color:#1F6A91;
+	border: 1px solid #ccc;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	font-size: 12px; 
+	cursor: pointer;
+	color:white;
+}

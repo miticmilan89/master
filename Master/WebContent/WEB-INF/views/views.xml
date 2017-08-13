@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+ 
+	<definition name="simpleLayout" template="/WEB-INF/layout/simpleLayout.jsp">
+		<put-attribute name="title"  value="" />
+		<put-attribute name="body"       value="" />
+	</definition>
+	<definition name="emptyLayout" template="/WEB-INF/layout/emptyLayout.jsp">
+		<put-attribute name="title"  value="" />
+		<put-attribute name="body"       value="" />
+	</definition>
+	<definition name="homeLayout" template="/WEB-INF/layout/homeLayout.jsp">
+		<put-attribute name="menu"  value="/WEB-INF/layout/menu.jsp" />
+		<put-attribute name="header"  value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="footer"  value="/WEB-INF/layout/footer.jsp" />
+		<put-attribute name="title"  value="" />
+		<put-attribute name="body"       value="" />
+	</definition>
+	 
+	<definition name="pageLoader" extends="emptyLayout">
+		<put-attribute name="body" value="/WEB-INF/views/pageLoader.jsp" />
+	</definition>
+	 
+	<definition name="home" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	<definition name="changePassAfterLogin" extends="emptyLayout">
+		<put-attribute name="body" value="/WEB-INF/views/changePassAfterLogin.jsp" />
+	</definition>
+	
+	<definition name="changePass" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/changePass.jsp" />
+	</definition>
+
+	<definition name="login" extends="emptyLayout">
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+<!--  nomenclatures  -->		
+	<definition name="appUserList" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/appUserList.jsp" />
+	</definition>
+	
+	<definition name="appUserSave" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/appUserSave.jsp" />
+	</definition>
+	
+	<definition name="appUserSaveRole" extends="emptyLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/appUserSaveRole.jsp" />
+	</definition>
+	
+	<definition name="auditLogList" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/common/auditLogList.jsp" />
+	</definition>
+	
+	<definition name="activityLogList" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/common/activityLogList.jsp" />
+	</definition>
+	
+	<definition name="appRoleList" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/appRoleList.jsp" />
+	</definition>
+
+	<definition name="appRoleSave" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/appRoleSave.jsp" />
+	</definition>
+	<definition name="participantList" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/participantList.jsp" />
+	</definition>
+
+	<definition name="participantSave" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/participantSave.jsp" />
+	</definition>
+	<definition name="passPolicyList" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/passPolicyList.jsp" />
+	</definition>
+
+	<definition name="passPolicySave" extends="homeLayout">
+		<put-attribute name="body" value="/WEB-INF/views/nomenclature/passPolicySave.jsp" />
+	</definition>
+</tiles-definitions>

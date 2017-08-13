@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa 
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+ 		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		">
+ 
+    <!-- ========================= RESOURCE DEFINITIONS ========================= -->
+	<context:annotation-config />
+    <context:component-scan base-package="rs.milanmitic.master"/>
+    
+    <context:property-placeholder location="/WEB-INF/conf/spring/data-access.properties" system-properties-mode="OVERRIDE"/>
+    
+    <task:annotation-driven />
+    <task:executor id="socketExecutor"  pool-size="50" keep-alive="30"  />
+
+	<!-- enables scanning for @Transactional annotations -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	       <property name="dataSource" ref="dataSource" />
+	       <property name="packagesToScan" value="rs.milanmitic.master.model" />   
+	       <property name="hibernateProperties">
+	           <props>
+	               <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+	               <prop key="hibernate.show_sql">false</prop>  
+	               <prop key="hibernate.jdbc.batch_size">500</prop>  
+	           </props>
+	       </property>
+	      
+	</bean>    
+  
+	<bean id="auditLogInterceptor"  class="rs.milanmitic.master.common.aop.AuditLogInterceptor" /> 
+    
+	<bean id="transactionManager" class="rs.milanmitic.master.common.MasterHibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
+		<property name="entityInterceptor"><ref bean="auditLogInterceptor"/></property> 
+	</bean>
+
+</beans>

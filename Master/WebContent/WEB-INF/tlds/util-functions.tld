@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee web-jsptaglibrary_2_1.xsd"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.1">
+
+
+	<tlib-version>1.1</tlib-version>
+	<short-name />
+	<uri>/WEB-INF/tlds/util-functions</uri>
+
+	<function>
+		<name>isFilterOpen</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isFilterOpen(java.lang.Object, java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>generateSecureHiddenTag</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String generateSecureHiddenTag(java.lang.Object)</function-signature>
+	</function>
+	
+	<function>
+		<name>substring</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String substring(java.lang.String, java.lang.Integer, java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>substring1</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String substring(java.lang.String, java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>startsWith</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean startsWith(java.lang.String, java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>isStringSurroundedWithDotsInList</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isStringSurroundedWithDotsInList(java.lang.String, java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>removeDots</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String removeDots(java.lang.String)</function-signature>
+	</function>	
+
+	<function>
+		<name>removeAllSpaces</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String removeAllSpaces(java.lang.String)</function-signature>
+	</function>	
+
+	<function>
+		<name>isSpringErrMsg</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isSpringErrMsg(java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<name>isMessageExist</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isMessageExist(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isDateBefore</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isDateBefore(java.util.Date, java.util.Date)</function-signature>
+	</function>
+	<function>
+		<name>getFormattedTypeMismatchErrorMessage</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String getFormattedTypeMismatchErrorMessage(java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<name>isErrorMessageTypeMismatch</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isErrorMessageTypeMismatch(java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<name>conditionalTitle</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String conditionalTitle(java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<name>conditionalString</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String conditionalString(java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<name>isUrlVisible</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isUrlVisible(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isUrlVisible2</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isUrlVisible(java.lang.String, java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isUrlVisible3</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isUrlVisible(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isUrlVisible4</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>boolean isUrlVisible(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>maskPan</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String maskPan(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>maskString</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String maskString(java.lang.String, java.lang.Integer)</function-signature>
+	</function>
+	<function>
+		<name>conditionalTitleClass</name>
+		<function-class>rs.milanmitic.master.common.util.Utils</function-class>
+		<function-signature>String conditionalTitleClass(java.lang.Object)</function-signature>
+	</function>
+
+ <tag>
+    <name>formatNumber</name>
+    <tag-class>rs.milanmitic.master.common.tag.FormatNumberTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+        Formats a numeric value as a number, currency, or percentage
+    </description>
+    <attribute>
+        <name>value</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>type</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>pattern</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>currencyCode</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>currencySymbol</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>groupingUsed</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>maxIntegerDigits</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>minIntegerDigits</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>maxFractionDigits</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>minFractionDigits</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>var</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>scope</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag> 
+  
+  <tag>
+    <name>formatDate</name>
+    <tag-class>rs.milanmitic.master.common.tag.FormatDateTag</tag-class>
+    <body-content>empty</body-content>
+    <description>
+        Formats a date and/or time using the supplied styles and pattern
+    </description>
+    <attribute>
+        <name>value</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>type</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>dateStyle</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>timeStyle</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>pattern</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>timeZone</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>var</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>scope</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>   
+</taglib>

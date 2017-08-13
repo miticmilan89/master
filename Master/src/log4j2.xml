@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<Configuration monitorInterval="30" packages="rs.milanmitic.master.common.logger" ><!-- TODO - NOT FOR PRODUCTION, set monitorInterval to higher value. It is time in seconds -->
+	
+	<Properties>
+		<Property name="log-path">temp/master</Property>
+	</Properties>
+	
+    <Appenders>
+        <Console name="console-log" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%X{loggedUser}] [%d{dd/MM/yy hh:mm:ss:SSS z}] %-10.10t %5p %-25.25c{3}:%L - %m%n" />
+        </Console>
+        
+		<RollingFile name="trace-log" fileName="${log-path}/master-trace.log" filePattern="${log-path}/master-trace-%d{yyyy-MM-dd}.%i.log">
+			<PatternLayout>
+				<pattern>[%X{loggedUser}] [%d{dd/MM/yy hh:mm:ss:SSS z}] %-10.10t %5p %-25.25c{3}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/> <!-- interval is based on smallest interval in DT pattern used in log file name, so if we have HH in it, this is one hour,  if dd - it is day ...-->
+				<SizeBasedTriggeringPolicy size="10 MB"/>
+			</Policies>
+			<DefaultRolloverStrategy max="100"/>	<!-- keep up to 100 files before removing them. -->
+		</RollingFile>
+		
+		<RollingFile name="error-log" fileName="${log-path}/master-error.log" filePattern="${log-path}/master-error-%d{yyyy-MM-dd}.%i.log">
+			<PatternLayout>
+				<pattern>[%X{loggedUser}] [%d{dd/MM/yy hh:mm:ss:SSS z}] %-10.10t %5p %-25.25c{3}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="10 MB"/>
+			</Policies>
+			<DefaultRolloverStrategy max="50"/>
+		</RollingFile>
+
+    </Appenders>
+	    
+	    
+	    
+    <Loggers>
+		<Root level="debug">	    
+			<AppenderRef  ref="trace-log" level="trace"/>
+			<AppenderRef  ref="error-log" level="error"/>
+			<AppenderRef  ref="console-log" level="debug"/>
+		</Root>	   				
+
+		<!-- 3rdparty Loggers -->
+        <logger name="javabeat.net.util" level="TRACE" />
+		<logger name="org.apache.tiles" level="warn"/>
+		<logger name="org.apache" level="warn"/>
+		<logger name="net.sf.jasperreports"  level="error"/>
+		<logger name="org.springframework"  level="error"/>
+		<logger name="org.springframework.web"  level="error"/>
+		<logger name="org.springframework.jdbc.core"  level="error"/>
+		<logger name="org.springframework.jdbc"  level="error"/>
+		<logger name="org.springmodules"  level="error"/>
+		
+		
+		<logger name="org.hibernate"  level="error"/>
+		<logger name="org.hibernate.type.level"  level="trace"/>
+		<logger name="org.hibernate.SQL.level"  level="trace"/>
+		<logger name="org.hibernate.engine.QueryParameters"  level="debug"/>
+	
+		<logger name="org.springframework.jdbc.datasource"  level="warn"/>
+		<logger name="org.springframework.jdbc.core.metadata"  level="warn"/>
+		<logger name="org.apache.jasper.compiler.TldLocationsCache"  level="warn"/>
+
+		<logger name="rs.milanmitic.master.common.MasterHibernateTransactionManager"  level="error"/>
+		<logger name="rs.milanmitic.master.common.aop.MasterLogAnnotationImpl"  level="error"/>
+		<logger name="rs.milanmitic.master.common.SessionListener"  level="error"/>
+		<logger name="rs.milanmitic.master.common.filter.ContextFilter"  level="debug"/>
+		
+		<logger name="net.sf.navigator"  level="error"/>
+		<logger name="rs.milanmitic.master.common.httpsession"  level="error"/>
+		<logger name="rs.milanmitic.master.common.ContextHolder"  level="debug"/>
+		
+
+		<logger name="rs.milanmitic.master"  level="debug"/>
+		<logger name="rs.milanmitic.master.common.iso"  level="debug"/>
+		<logger name="rs.milanmitic.master.service"  level="debug"/>
+		<logger name="rs.milanmitic.master.thread"  level="debug"/>
+
+
+        
+    </Loggers>
+</Configuration>

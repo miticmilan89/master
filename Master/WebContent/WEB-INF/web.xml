@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Master</display-name>
+    <!--
+		- Location of the XML file(s) that defines the root application context.
+		- Applied by ContextLoaderListener.
+	-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/conf/spring/*.xml</param-value>
+    </context-param>
+
+    <!-- used to provide the ability to enter Chinese characters inside the Owner Form -->    
+    <filter>
+	    <filter-name>encodingFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	    <init-param>
+	        <param-name>encoding</param-name>
+	        <param-value>UTF-8</param-value>
+	    </init-param>
+	    <init-param>
+	        <param-name>forceEncoding</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	</filter>
+	<!-- Multipart must be before spring security chain -->
+	<filter>
+	    <filter-name>MultipartFilter</filter-name>
+	    <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+	</filter>
+	<filter>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter>
+	    <filter-name>antisamyFilter</filter-name>
+    	<filter-class>rs.milanmitic.master.filter.AntiSamyFilter</filter-class>
+	    <init-param>
+	        <param-name>antisamy-policy-file</param-name>
+	        <param-value>antiSamyPolicy.xml</param-value>
+	    </init-param>
+	</filter>
+	<!-- Our filter to create context holder for further use -->
+	<filter>
+		<display-name>ContextFilter</display-name>
+		<filter-name>ContextFilter</filter-name>
+		<filter-class>rs.milanmitic.master.filter.ContextFilter</filter-class>
+	</filter>
+
+	<filter>
+		<display-name>SecurityFilter</display-name>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>rs.milanmitic.master.filter.SecurityFilter</filter-class>
+	</filter>
+		 
+	<!-- Filters are executed sequnetially as listed bellow  -->	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	    <filter-name>MultipartFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>	
+	<filter-mapping>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>antisamyFilter</filter-name>
+		<url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ContextFilter</filter-name>
+		<url-pattern>/app/*</url-pattern>
+	</filter-mapping>	
+ 	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+ 
+    <listener><listener-class>org.springframework.web.context.ContextLoaderListener</listener-class></listener>
+	<listener><listener-class>rs.milanmitic.master.common.StartupListener</listener-class></listener>
+	<listener><listener-class>rs.milanmitic.master.common.SessionListener</listener-class></listener>
+	<listener><listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class></listener>
+		
+    <!--
+		Servlet that dispatches request to registered handlers (Controller implementations).
+	-->
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value/>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet>
+    	<display-name>SessionCheck</display-name>
+    	<servlet-name>SessionCheck</servlet-name>
+    	<servlet-class>rs.milanmitic.master.common.httpsession.SessionCheck</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>/app/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+    	<servlet-name>SessionCheck</servlet-name>
+    	<url-pattern>/sessionCheck</url-pattern>
+    </servlet-mapping>
+
+    <!--  	No need for welcome-file declaration here.
+    		See inside spring/mvc-core-config.xml : 
+    		<mvc:view-controller path="/" view-name="welcome" /> 
+    -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error400.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error500.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/errorGlobal.jsp</location>
+	</error-page>
+
+<!-- OWASP recommendation. Can be owerwritten in Java. Check WEB_SECURITY_USE_HTTP_ONLY and WEB_SECURITY_SESSION_TIMEOUT_SEC 
+	<session-config>
+		<session-timeout>30</session-timeout>
+		<cookie-config>
+			<http-only>true</http-only>
+			un comment bellow line on TEST environment or production 
+			<secure>true</secure>
+		</cookie-config>
+	</session-config>
+-->
+
+	<resource-ref id="ResourceRef_1233976849358">
+		<res-ref-name>jdbc/masterDatasource</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+
+	<!-- default for all JSP pages, so if we forget to add on JSP - @page pageEncoding="UTF-8" we will by default use UTF8 -->
+	<jsp-config>
+	    <jsp-property-group>
+	        <url-pattern>*.jsp</url-pattern>
+	        <page-encoding>UTF-8</page-encoding>
+	    </jsp-property-group>
+	</jsp-config>
+
+</web-app>

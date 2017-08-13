@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<MenuConfig>
+  <Displayers>
+	<Displayer name="OfficialMagicMenu" type="rs.milanmitic.master.common.menu.MasterMenuDisplayer"/>
+  </Displayers>
+
+  
+  <Menus>
+	<Menu   name="menu.participant"   title="menu.participant" >
+		<Item   name="menu.addParticipant"   title="menu.addParticipant" page="/app/admin/participant/add"/>
+		<Item   name="menu.listParticipant"   title="menu.listParticipant" page="/app/admin/participant/list"/>
+	</Menu>
+	<Menu   name="menu.user"   title="menu.user" >
+		<Item   name="menu.addUser"   title="menu.addUser" page="/app/appUser/add"/>
+		<Item   name="menu.listUser"   title="menu.listUser" page="/app/appUser/list"/>
+	</Menu>
+	<Menu   name="menu.appRole"   title="menu.appRole" >
+		<Item   name="menu.addAppRole"   title="menu.addAppRole" page="/app/appRole/add"/>
+		<Item   name="menu.listAppRole"   title="menu.listAppRole" page="/app/appRole/list"/>
+	</Menu>
+	<Menu   name="menu.passPolicy"   title="menu.passPolicy" >
+		<Item   name="menu.addPassPolicy"   title="menu.addPassPolicy" page="/app/passPolicy/add"/>
+		<Item   name="menu.listPassPolicy"   title="menu.listPassPolicy" page="/app/passPolicy/list"/>
+	</Menu>
+	<Menu name="menu.administration"  title="menu.administration">
+		<Item   name="menu.changePassword"   title="menu.changePassword" page="/app/changePass"/>
+		<Item   name="menu.listAuditlog"   title="menu.listAuditlog" page="/app/auditLog/list"/>
+		<Item   name="menu.listActivitylog"   title="menu.listActivityLog" page="/app/activityLog/list"/>
+		
+		<Item   name="menu.logout"   title="menu.logout" page="/app/logout"/>
+	</Menu>  	
+  </Menus>
+</MenuConfig>
