@@ -1,5 +1,6 @@
 package rs.milanmitic.master.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import rs.milanmitic.master.common.Constants;
 import rs.milanmitic.master.common.ContextHolder;
+import rs.milanmitic.master.common.SelectFieldIntf;
 import rs.milanmitic.master.common.aop.MasterLogAnnotation;
+import rs.milanmitic.master.common.data.LabelValue;
 import rs.milanmitic.master.common.exception.ValidateException;
 import rs.milanmitic.master.common.pagging.SearchResults;
 import rs.milanmitic.master.common.util.Utils;
@@ -52,8 +55,13 @@ public class AppRoleController extends BasicController {
 	 * @param isList
 	 */
 	private void preparePageData(Model model, boolean isAdd, AppRole bean, boolean isList) {
-//		if (ContextHolder.getLoggedUser().isAdmin())
-			model.addAttribute("participantList", nomenclatureService.getParticipantList(null).getResults(Participant.class));
+		if (ContextHolder.getLoggedUser().isAdmin()) {
+			SearchResults list = nomenclatureService.getParticipantList(null);
+			List<SelectFieldIntf> participantList = new ArrayList<SelectFieldIntf>();
+			participantList.add(new LabelValue("", ""));
+			participantList.addAll(list.getResults(Participant.class));
+			model.addAttribute("participantList", participantList);
+		}
 	}
 
 	private void prepareRoleFunctions(Model model, Long appRoleFk) {
@@ -157,7 +165,12 @@ public class AppRoleController extends BasicController {
 
 			if (!hasErrors(request)) {
 				if (!isAdd) {
-					checkSecureHiddenFields(bean, request);
+					try {
+						checkSecureHiddenFields(bean, request);
+					} catch (ValidateException t) {
+						addError(request.getSession(), t.getMessage());
+						return "redirect:/app/home";
+					}
 					ContextHolder.createUserTransactionLog(request);
 					nomenclatureService.updateAppRole(bean, assignedFunctions);
 					addMessage(request.getSession(), "message.recordUpdate");
@@ -206,7 +219,7 @@ public class AppRoleController extends BasicController {
 	@RequestMapping(value = "/list")
 	public String appRoleList(HttpServletRequest request, Model model, AppRole bean, BindingResult result) {
 		try {
-			preparePageData(model, false, null, true);
+			preparePageData(model, true, null, true);
 			// check only fields with Length annotation
 			Utils.checkAnnotationLength(bean, result);
 

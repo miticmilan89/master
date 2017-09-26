@@ -32,7 +32,7 @@ public interface NomenclatureDao extends BasicDao {
 
 	List<AppRole> getAssignedRolesForUser(Long appUserFk);
 
-	List<AppRole> getNotAssignedRolesForUser(Long appUserFk);
+	List<AppRole> getNotAssignedRolesForUser(Long appUserFk, Long participantFk);
 
 	List<AppRole> getAllAppRoles();
 

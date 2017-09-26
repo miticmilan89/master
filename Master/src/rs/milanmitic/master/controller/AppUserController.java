@@ -86,8 +86,8 @@ public class AppUserController extends BasicController {
 		if (appUserFk != null) {
 			// read assigned roles and not assigned roles
 			List<AppRole> assignedRoles = nomenclatureService.getAssignedRolesForUser(appUserFk);
-			List<AppRole> notAssignedRoles = nomenclatureService.getNotAssignedRolesForUser(appUserFk);
-
+			List<AppRole> notAssignedRoles = null;
+			notAssignedRoles = nomenclatureService.getNotAssignedRolesForUser(appUserFk, participantId);
 			model.addAttribute("assignedRoles", assignedRoles);
 			model.addAttribute("notAssignedRoles", notAssignedRoles);
 		} else {
@@ -210,7 +210,12 @@ public class AppUserController extends BasicController {
 			
 			if (!hasErrors(request)) {
 				if (!isAdd) {
-					checkSecureHiddenFields(appUser, request);
+					try {
+						checkSecureHiddenFields(appUser, request);
+					} catch (ValidateException t) {
+						addError(request.getSession(), t.getMessage());
+						return "redirect:/app/home";
+					}
 					ContextHolder.createUserTransactionLog(request);
 					nomenclatureService.updateAppUser(appUser, assignedRoles, true);
 					addMessage(request.getSession(), "message.recordUpdate");

@@ -136,6 +136,7 @@ function checkForm() {
 		</c:if>
 	</c:if>
 </span>
+
 <span id="PAGE_TITLE">
 	<spring:message code="${_pageTitle}"/>
 </span>

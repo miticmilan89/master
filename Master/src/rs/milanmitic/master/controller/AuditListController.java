@@ -96,9 +96,9 @@ public class AuditListController extends BasicController {
 				model.addAttribute("auditLog", auditLog);
 
 				if (StringUtils.isBlank(auditLog.getOrderColumn()))
-					auditLog.setOrderColumn("1");
+					auditLog.setOrderColumn("2");
 				if (auditLog.getOrderAsc() == null)
-					auditLog.setOrderAsc(Boolean.TRUE);
+					auditLog.setOrderAsc(Boolean.FALSE);
 				SearchResults sd = commonService.getAuditLogList(auditLog);
 				if (sd.isEmpty())
 					addMessage(request, "error.noRecordsFound");

@@ -120,7 +120,7 @@ public class NomenclatureHibernateDao extends BasicDaoHibernate implements Nomen
 	@SuppressWarnings("unchecked")
 	@Override
 	@MasterLogAnnotation
-	public List<AppRole> getNotAssignedRolesForUser(Long appUserFk) {
+	public List<AppRole> getNotAssignedRolesForUser(Long appUserFk, Long participantFk) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		String sql = "select a from AppRole a where a.id NOT IN (SELECT f.appRoleFk FROM AppUserAppRole f WHERE f.appUserFk=:appUserFk)";
@@ -128,6 +128,10 @@ public class NomenclatureHibernateDao extends BasicDaoHibernate implements Nomen
 		if (ContextHolder.getLoggedUser().isUser()) {
 			sql += " and a.participantFk = :participantFk";
 			map.put("participantFk", ContextHolder.getLoggedParticipantData().getParticipantId());
+		}
+		if (participantFk != null) {
+			sql += " and a.participantFk = :participantFk";
+			map.put("participantFk", participantFk);
 		}
 		sql += " order by a.roleName";
 		Query q = getCurrentSession().createQuery(sql);

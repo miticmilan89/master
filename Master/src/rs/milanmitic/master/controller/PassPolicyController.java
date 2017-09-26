@@ -22,6 +22,7 @@ import rs.milanmitic.master.common.ContextHolder;
 import rs.milanmitic.master.common.SelectFieldIntf;
 import rs.milanmitic.master.common.aop.MasterLogAnnotation;
 import rs.milanmitic.master.common.data.LabelValue;
+import rs.milanmitic.master.common.exception.ValidateException;
 import rs.milanmitic.master.common.pagging.SearchResults;
 import rs.milanmitic.master.common.util.Utils;
 import rs.milanmitic.master.model.Participant;
@@ -142,7 +143,12 @@ public class PassPolicyController extends BasicController {
 			boolean isAdd = Constants.ACTION_ADD.equals(action);
 			if (!hasErrors(request)) {
 				if (!isAdd) {
-					checkSecureHiddenFields(passPolicy, request);
+					try {
+						checkSecureHiddenFields(passPolicy, request);
+					} catch (ValidateException t) {
+						addError(request.getSession(), t.getMessage());
+						return "redirect:/app/home";
+					}
 					ContextHolder.createUserTransactionLog(request);
 					nomenclatureService.updatePassPolicy(passPolicy);
 					addMessage(request.getSession(), Constants.LABEL_MESSAGE_RECORD_UPDATE);

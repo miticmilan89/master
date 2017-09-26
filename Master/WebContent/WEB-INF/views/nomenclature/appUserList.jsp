@@ -32,7 +32,7 @@ $(document).ready(function() {
 			<c:set value="${appUser}" var="currentFormBean" scope="request"/>
 			<masterInput:searchInputField fieldClass="field30perc" label="label.appUser.firstName" name="firstName" value="${appUser.firstName }" /> 
 			<masterInput:searchInputField fieldClass="field30perc" label="label.appUser.lastName" name="lastName" value="${appUser.lastName }" /> 
-			<masterInput:searchInputField fieldClass="field30perc" label="label.appUser.username" name="firstName" value="${appUser.username }" /> 
+			<masterInput:searchInputField fieldClass="field30perc" label="label.appUser.username" name="username" value="${appUser.username }" /> 
 			
 			<input type="hidden" name="currentPage" id="currentPage" value="<c:out   escapeXml="false" value="${appUser.currentPage}"/>" />
 			<input type="hidden" name="orderColumn" id="orderColumn" value="<c:out   escapeXml="false" value="${appUser.orderColumn}"/>" />

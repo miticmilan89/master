@@ -41,7 +41,7 @@ public interface NomenclatureService {
 
 	List<AppRole> getAssignedRolesForUser(Long appUserFk);
 
-	List<AppRole> getNotAssignedRolesForUser(Long appUserFk);
+	List<AppRole> getNotAssignedRolesForUser(Long appUserFk, Long participantFk);
 
 	List<AppRole> getAllAppRoles();
 

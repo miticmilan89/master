@@ -107,7 +107,7 @@ function checkForm() {
 			<masterInput:inputField inputType="password" fieldClass="field30perc" label="label.appUser.password" name="password" required="true"  />
 			<masterInput:inputField inputType="password" fieldClass="field30perc" label="label.appUser.repeatPassword" name="repeatPassword" required="true"  />
 		
-			<masterInput:selectField fieldClass="field30perc" label="label.appUser.status" name="status" required="true" items="${ userStatusList }"   size="1" />
+			<masterInput:selectField fieldClass="field30perc" label="label.appUser.status" name="status" required="true" items="${ userStatusList }" value="${ appUser.status }"  size="1" />
 			<masterInput:selectField fieldClass="field30perc" label="label.appUser.passPolicyFk" name="passPolicyFk" value="${ appUser.passPolicyFk }" items="${ passPolicyList }" size="1" required="false"  />	
 	
 		</div>

@@ -68,12 +68,16 @@ public class NomenclatureServiceImpl extends MasterServiceImpl implements Nomenc
 		bean.setChangedByAppUserFk(ContextHolder.getLoggedUser().getId());
 		validateAppUser(bean);
 
+		if (ContextHolder.isLoggedUserParticipant()) {
+			bean.setUserType(UserType.USER.getDbId());
+		}
+		
 		if (UserType.ADMIN.getDbId().equals(bean.getUserType()))
 			bean.setParticipantFk(null);
 		
 		if (ContextHolder.isLoggedUserParticipant() && !ContextHolder.getLoggedParticipantData().getParticipantId().equals(bean.getParticipantFk())) {
 			log.error("Wrong user participant id supplied:" + bean.getParticipantFk() + " but logged user participant id is:" + ContextHolder.getLoggedParticipantData().getParticipantId());
-			throw new UnpredictableException("Wrong user participant");
+			throw new ValidateException("Wrong user participant");
 		}
 
 		PassPolicy passPolicy = null;
@@ -173,6 +177,10 @@ public class NomenclatureServiceImpl extends MasterServiceImpl implements Nomenc
 		
 		checkPassword(bean, true);
 
+		if (ContextHolder.isLoggedUserParticipant()) {
+			bean.setUserType(UserType.USER.getDbId());
+		}
+		
 		if (UserType.ADMIN.getDbId().equals(bean.getUserType()))
 			bean.setParticipantFk(null);
 		
@@ -387,10 +395,10 @@ public class NomenclatureServiceImpl extends MasterServiceImpl implements Nomenc
 	@Override
 	@MasterLogAnnotation
 	public AppRole getAppRoleById(Long id) {
-		return nomenclatureDao.getByPk(id, AppRole.class);
-		// if (b != null && ContextHolder.isLoggedUserParticipant() && !ContextHolder.getLoggedParticipantData().getParticipantId().equals(b.getParticipantFk()))
-		// b = null;
-		// return b;
+		AppRole b =  nomenclatureDao.getByPk(id, AppRole.class);
+		if (b != null && ContextHolder.isLoggedUserParticipant() && !ContextHolder.getLoggedParticipantData().getParticipantId().equals(b.getParticipantFk()))
+			b = null;
+		return b;
 	}
 
 	/**
@@ -496,8 +504,8 @@ public class NomenclatureServiceImpl extends MasterServiceImpl implements Nomenc
 
 	@Override
 	@MasterLogAnnotation
-	public List<AppRole> getNotAssignedRolesForUser(Long appUserFk) {
-		return nomenclatureDao.getNotAssignedRolesForUser(appUserFk);
+	public List<AppRole> getNotAssignedRolesForUser(Long appUserFk, Long participantFk) {
+		return nomenclatureDao.getNotAssignedRolesForUser(appUserFk, participantFk);
 	}
 
 	@Override

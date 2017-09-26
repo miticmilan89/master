@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import rs.milanmitic.master.common.Constants;
 import rs.milanmitic.master.common.ContextHolder;
 import rs.milanmitic.master.common.aop.MasterLogAnnotation;
+import rs.milanmitic.master.common.exception.ValidateException;
 import rs.milanmitic.master.common.pagging.SearchResults;
 import rs.milanmitic.master.common.util.Utils;
 import rs.milanmitic.master.model.Participant;
@@ -121,7 +122,12 @@ public class ParticipantController extends BasicController {
 			preparePageData(model, isAdd, bean, false);
 			if (!hasErrors(request)) {
 				if (!isAdd) {
-					checkSecureHiddenFields(bean, request);
+					try {
+						checkSecureHiddenFields(bean, request);
+					} catch (ValidateException t) {
+						addError(request.getSession(), t.getMessage());
+						return "redirect:/app/home";
+					}
 					ContextHolder.createUserTransactionLog(request);
 					nomenclatureService.updateParticipant(bean);
 					addMessage(request.getSession(), Constants.LABEL_MESSAGE_RECORD_UPDATE);
